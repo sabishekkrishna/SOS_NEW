@@ -199,28 +199,13 @@ export const VaultPage: React.FC<VaultPageProps> = ({ onNavigate }) => {
                 chronological descending index (Reel IX, Reel VII, Reel III, Reel I):
               </p>
 
-              <div className="space-y-1.5 font-typewriter text-xs text-[#c8924b] mb-4 bg-[#171310] p-3 rounded border border-[#2e2318]">
+              <div className="space-y-1.5 font-typewriter text-xs text-[#c8924b] mb-2 bg-[#171310] p-3 rounded border border-[#2e2318]">
                 <div>• Reel 09 (The Study) → Morse stain (···) = <strong className="text-white">S</strong></div>
                 <div>• Reel 07 (The Radio) → Weathered nameplate &quot;OSCAR&quot; (Phonetic alphabet) = <strong className="text-white">O</strong></div>
                 <div>• Reel 03 (The Map Room) → 19 Pins = <strong className="text-white">S</strong> (Shift 3)</div>
                 <div>• Reel 01 (The Letter) → Caesar Shift 3 = <strong className="text-white">7</strong></div>
                 <div className="pt-1.5 border-t border-[#3d2e20] text-emerald-400 font-bold">
                   → COMBINED PASSCODE: SOS7
-                </div>
-              </div>
-
-              {/* EXACT PROMPT REQUIREMENT:
-                  "If correct, show a success message and placeholder text '[prize-claim instructions here]'."
-              */}
-              <div className="p-4 bg-[#1a140f] border-2 border-dashed border-[#c8924b]/60 rounded-lg text-center my-4">
-                <div className="text-xs uppercase font-typewriter text-[#c8924b] font-bold mb-1">
-                  EVENT FACILITATOR DIRECTIVE
-                </div>
-                <div className="font-mono text-base font-bold text-[#f7e4b5]">
-                  [prize-claim instructions here]
-                </div>
-                <div className="text-[11px] font-serif-body text-[#9e8c7c] mt-2 italic">
-                  Present this authenticated clearance screen to the event director or enter your team credentials at headquarters.
                 </div>
               </div>
             </div>
