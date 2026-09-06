@@ -9,8 +9,8 @@ export const EXHIBITS: ExhibitMeta[] = [
     reelNumber: '07',
     reelRoman: 'VII',
     title: 'The Radio',
-    subtitle: 'Rebuilt frequency tuner',
-    thumbnailDesc: 'Scrambled receiver dial with copper needle',
+    subtitle: 'Rebuilt receiver cabinet',
+    thumbnailDesc: 'Vintage broadcast receiver with aged brass naming plate',
   },
   {
     id: 'letter',

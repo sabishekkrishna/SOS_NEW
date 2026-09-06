@@ -201,7 +201,7 @@ export const VaultPage: React.FC<VaultPageProps> = ({ onNavigate }) => {
 
               <div className="space-y-1.5 font-typewriter text-xs text-[#c8924b] mb-4 bg-[#171310] p-3 rounded border border-[#2e2318]">
                 <div>• Reel 09 (The Study) → Morse stain (···) = <strong className="text-white">S</strong></div>
-                <div>• Reel 07 (The Radio) → Resting needle = <strong className="text-white">O</strong></div>
+                <div>• Reel 07 (The Radio) → Weathered nameplate &quot;OSCAR&quot; (Phonetic alphabet) = <strong className="text-white">O</strong></div>
                 <div>• Reel 03 (The Map Room) → 19 Pins = <strong className="text-white">S</strong> (Shift 3)</div>
                 <div>• Reel 01 (The Letter) → Caesar Shift 3 = <strong className="text-white">7</strong></div>
                 <div className="pt-1.5 border-t border-[#3d2e20] text-emerald-400 font-bold">
