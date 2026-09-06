@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Playfair Display', Georgia, serif;
+    background-color: #12100e;
+    color: #dfd7cc;
+  }
+
+  h1, h2, h3, .font-cinzel {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.05em;
+  }
+
+  .font-typewriter {
+    font-family: 'Special Elite', 'Courier Prime', Courier, monospace;
+  }
+
+  .font-serif-body {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* Atmospheric subtle vignette and vintage textures */
+.archive-vignette {
+  background: radial-gradient(circle at 50% 30%, rgba(32, 26, 22, 0.4) 0%, rgba(10, 8, 7, 0.95) 100%);
+}
+
+.aged-parchment {
+  background: radial-gradient(ellipse at center, #f5ebd7 0%, #ecdcb9 65%, #d9be8c 100%);
+  color: #2b2219;
+  box-shadow: inset 0 0 40px rgba(85, 57, 24, 0.25), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.paper-crease {
+  background-image: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 40%, rgba(0,0,0,0.15) 100%);
+}
+
+/* Custom scrollbar for archive theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #14110f;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a322b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5a4f45;
+}
+

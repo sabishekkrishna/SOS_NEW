@@ -1,0 +1,6 @@
+{
+  "name": "The Thorne Archive",
+  "description": "Recovered materials of Elias Thorne, cartographer, missing since 1932. Sealed puzzle archive.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
