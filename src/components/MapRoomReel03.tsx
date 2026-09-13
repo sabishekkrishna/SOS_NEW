@@ -7,35 +7,28 @@ interface MapRoomReel03Props {
   onNavigate: (path: RoutePath) => void;
 }
 
-// Exactly 19 separate pins spread cleanly across the chart without overlap
+// Exactly 12 clearly separated pins spread cleanly across the chart without overlap
 const MAP_PINS = [
-  { id: 1, x: 120, y: 160, label: 'Cape Horn Point' },
-  { id: 2, x: 195, y: 130, label: 'North Atoll' },
-  { id: 3, x: 280, y: 175, label: 'Trident Reach' },
-  { id: 4, x: 370, y: 140, label: 'St. Jude Bay' },
-  { id: 5, x: 490, y: 160, label: 'Meridian Ridge' },
-  { id: 6, x: 610, y: 135, label: 'Eastern Shelf' },
-  { id: 7, x: 680, y: 220, label: 'Gull Head' },
-  { id: 8, x: 630, y: 310, label: 'Shadow Channel' },
-  { id: 9, x: 535, y: 270, label: 'Falcon Shoals' },
-  { id: 10, x: 440, y: 330, label: 'Thorne Sound' },
-  { id: 11, x: 360, y: 260, label: 'Anchor Basin' },
-  { id: 12, x: 265, y: 320, label: 'Mist Strait' },
-  { id: 13, x: 170, y: 275, label: 'Deadman Pass' },
-  { id: 14, x: 130, y: 380, label: 'South Headland' },
-  { id: 15, x: 225, y: 440, label: 'Cormorant Bank' },
-  { id: 16, x: 340, y: 410, label: 'Iron Anchorage' },
-  { id: 17, x: 470, y: 445, label: 'Lowland Spit' },
-  { id: 18, x: 575, y: 415, label: 'Pelican Reef' },
-  { id: 19, x: 670, y: 470, label: 'Terminus Point' },
+  { id: 1, x: 130, y: 150, label: 'Cape Horn' },
+  { id: 2, x: 235, y: 125, label: 'North Atoll' },
+  { id: 3, x: 350, y: 140, label: 'Trident Reach' },
+  { id: 4, x: 480, y: 120, label: 'St. Jude Bay' },
+  { id: 5, x: 620, y: 150, label: 'Meridian Ridge' },
+  { id: 6, x: 670, y: 270, label: 'Eastern Shelf' },
+  { id: 7, x: 590, y: 380, label: 'Gull Head' },
+  { id: 8, x: 460, y: 440, label: 'Shadow Channel' },
+  { id: 9, x: 330, y: 410, label: 'Thorne Sound' },
+  { id: 10, x: 200, y: 430, label: 'Anchor Basin' },
+  { id: 11, x: 140, y: 310, label: 'Mist Strait' },
+  { id: 12, x: 380, y: 270, label: 'Central Hub' },
 ];
 
-// String connections linking the 19 pins in a survey traversal
+// String connections linking the 12 pins in a survey traversal
 const STRING_PATHS = [
-  [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7],
-  [7, 8], [8, 9], [9, 10], [10, 11], [11, 12], [12, 13],
-  [13, 14], [14, 15], [15, 16], [16, 17], [17, 18], [18, 19],
-  [3, 11], [10, 16], [5, 9] // Secondary cross-tie strings
+  [1, 2], [2, 3], [3, 4], [4, 5],
+  [5, 6], [6, 7], [7, 8], [8, 9],
+  [9, 10], [10, 11], [11, 1],
+  [12, 3], [12, 7], [12, 10]
 ];
 
 export const MapRoomReel03: React.FC<MapRoomReel03Props> = ({ onNavigate }) => {
@@ -283,8 +276,8 @@ export const MapRoomReel03: React.FC<MapRoomReel03Props> = ({ onNavigate }) => {
         <p
           id="hidden-shift-key-web"
           style={{
-            color: '#12100e',
-            backgroundColor: '#12100e',
+            color: '#141414',
+            backgroundColor: '#141414',
             userSelect: 'text',
           }}
           className="text-sm font-mono"

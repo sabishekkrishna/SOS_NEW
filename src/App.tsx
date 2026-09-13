@@ -25,7 +25,7 @@ const ROUTE_TITLES: Record<RoutePath, string> = {
   '/archive/reel-07': 'Reel VII — The Radio',
   '/archive/reel-03': 'Reel III — The Map Room',
   '/archive/reel-01': 'Reel I — The Letter',
-  '/materials': 'Field Materials & Cipher Reference',
+  '/materials': 'The Thorne Archive — Field Reference',
   '/vault': 'The Vault',
 };
 

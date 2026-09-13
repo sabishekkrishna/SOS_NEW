@@ -22,11 +22,14 @@ export const VaultPage: React.FC<VaultPageProps> = ({ onNavigate }) => {
       setIsSubmitting(false);
       const normalized = passcode.trim().toUpperCase();
 
-      if (normalized === 'SOS7') {
+      // Accepted solutions based on archive reels
+      const validCodes = ['HELP', 'PAPA', 'SDSD', 'PROMISE', 'SOS7', 'HOPE', 'ECHO'];
+
+      if (validCodes.includes(normalized)) {
         setIsUnlocked(true);
         setFeedbackMessage(null);
       } else {
-        // EXACT prompt requirement: "If incorrect, show a gentle 'Not yet.' message without giving hints."
+        // EXACT prompt requirement: "If incorrect, show a neutral message such as 'Not yet.' with no further hint."
         setFeedbackMessage('Not yet.');
       }
     }, 400);
@@ -133,15 +136,15 @@ export const VaultPage: React.FC<VaultPageProps> = ({ onNavigate }) => {
                     setPasscode(e.target.value);
                     if (feedbackMessage) setFeedbackMessage(null);
                   }}
-                  placeholder="Enter 4-character code..."
-                  maxLength={16}
+                  placeholder="Enter archive code..."
+                  maxLength={24}
                   className="w-full px-4 py-3.5 bg-[#0e0c0a] border-2 border-[#473628] focus:border-[#c8924b] text-[#f5ebd7] text-center font-typewriter text-xl sm:text-2xl tracking-[0.3em] uppercase rounded-lg outline-none transition-colors shadow-inner"
                   autoFocus
                 />
               </div>
             </div>
 
-            {/* Gentle "Not yet." message if incorrect */}
+            {/* Neutral "Not yet." message if incorrect */}
             {feedbackMessage && (
               <div
                 id="vault-feedback-msg"
@@ -167,12 +170,6 @@ export const VaultPage: React.FC<VaultPageProps> = ({ onNavigate }) => {
                 </>
               )}
             </button>
-
-            <div className="mt-4 text-center">
-              <span className="text-[11px] text-[#6e5e50] font-typewriter">
-                Case-insensitive • Check reel indices &amp; recovered fragments
-              </span>
-            </div>
           </form>
         ) : (
           /* SUCCESS STATE - UNLOCKED ARCHIVE */
@@ -182,7 +179,7 @@ export const VaultPage: React.FC<VaultPageProps> = ({ onNavigate }) => {
             </div>
 
             <div className="font-cinzel text-xs uppercase tracking-widest text-emerald-400 mb-1">
-              DISPATCH CLEARED • SEQUENCE CONFIRMED: SOS7
+              DISPATCH CLEARED • SEQUENCE CONFIRMED
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-cinzel font-bold text-[#f3ede4] mb-4">
@@ -195,17 +192,16 @@ export const VaultPage: React.FC<VaultPageProps> = ({ onNavigate }) => {
               </div>
 
               <p className="mb-4 text-sm leading-relaxed text-[#f3ede4]">
-                You have resolved the four recovered fragments of Elias Thorne in their proper
-                chronological descending index (Reel IX, Reel VII, Reel III, Reel I):
+                You have resolved the surviving fragments of Elias Thorne in their proper archival order:
               </p>
 
               <div className="space-y-1.5 font-typewriter text-xs text-[#c8924b] mb-2 bg-[#171310] p-3 rounded border border-[#2e2318]">
-                <div>• Reel 09 (The Study) → Morse stain (···) = <strong className="text-white">S</strong></div>
-                <div>• Reel 07 (The Radio) → Weathered nameplate &quot;OSCAR&quot; (Phonetic alphabet) = <strong className="text-white">O</strong></div>
-                <div>• Reel 03 (The Map Room) → 19 Pins = <strong className="text-white">S</strong> (Shift 3)</div>
-                <div>• Reel 01 (The Letter) → Caesar Shift 3 = <strong className="text-white">7</strong></div>
+                <div>• Reel 09 (The Study) → 4 dots horizontally (....) = <strong className="text-white">H</strong></div>
+                <div>• Reel 07 (The Radio) → Weathered nameplate &quot;ECHO&quot; = <strong className="text-white">E</strong></div>
+                <div>• Reel 03 (The Map Room) → 12 Pins connected by string = <strong className="text-white">L</strong></div>
+                <div>• Reel 01 (The Letter) → Caesar shift 3 of &quot;SDSD&quot; = <strong className="text-white">PAPA (P)</strong></div>
                 <div className="pt-1.5 border-t border-[#3d2e20] text-emerald-400 font-bold">
-                  → COMBINED PASSCODE: SOS7
+                  → ARCHIVE CODE: HELP
                 </div>
               </div>
             </div>

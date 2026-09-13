@@ -92,64 +92,49 @@ export const StudyReel09: React.FC<StudyReel09Props> = ({ onNavigate }) => {
         </text>
 
         {/* Thorne's Handwritten Note */}
-        <g fill="#291e14" fontFamily="'Playfair Display', Georgia, serif" fontSize="21" fontStyle="italic">
-          <text x="135" y="195">They think I mapped mountains and rivers.</text>
-          <text x="135" y="235">I mapped something else — a promise.</text>
+        <g fill="#291e14" fontFamily="'Playfair Display', Georgia, serif" fontSize="23" fontStyle="italic">
+          <text x="145" y="220">They think I mapped mountains and rivers.</text>
+          <text x="145" y="270">I mapped something else — a promise.</text>
+          <text x="145" y="340">If you&apos;ve come this far, you already</text>
+          <text x="145" y="390">understand: nothing here is wasted,</text>
+          <text x="145" y="440">not even a stain on the page.</text>
+        </g>
 
-          <text x="135" y="305">If you have tracked my footprints to this desk,</text>
-          <text x="135" y="345">you already know the rule of my work:</text>
-          <text x="135" y="385">nothing here is wasted, not even</text>
-          <text x="135" y="425">a stain on the page.</text>
-
-          <text x="135" y="495">The world watches the bold lines in ink,</text>
-          <text x="135" y="535">while the quietest signals sit right at the fringe,</text>
-          <text x="135" y="575">waiting for someone patient enough</text>
-          <text x="135" y="615">to count the drops.</text>
+        {/* CRITICAL PUZZLE CLUE:
+            Four coffee-ring stain dots placed horizontally below the paragraphs (Morse code .... = H)
+            Evenly spaced horizontally across x = 265, 355, 445, 535 at y = 525
+        */}
+        <g id="horizontal-coffee-stains" transform="translate(0, 525)">
+          {[265, 355, 445, 535].map((xPos, idx) => (
+            <g key={idx} transform={`translate(${xPos}, 0)`}>
+              {/* Outer faint dried ring */}
+              <circle cx="0" cy="0" r="17" fill="url(#stainRing1)" />
+              {/* Coffee ring darker edge */}
+              <circle cx="0" cy="0" r="16.5" fill="none" stroke="#683d16" strokeWidth="1.6" opacity="0.65" />
+              {/* Secondary irregular wash */}
+              <circle cx="0.5" cy="-0.5" r="13" fill="#805224" opacity="0.16" />
+              <circle cx="-1" cy="1" r="7" fill="#523212" opacity="0.2" />
+              {/* Tiny dried coffee rim grain */}
+              <circle cx="12" cy="10" r="1.2" fill="#422509" opacity="0.45" />
+            </g>
+          ))}
+          {/* Faint coffee splatter speckles */}
+          <circle cx="310" cy="12" r="1.2" fill="#5c3817" opacity="0.3" />
+          <circle cx="400" cy="-8" r="1.5" fill="#5c3817" opacity="0.35" />
+          <circle cx="490" cy="10" r="1.1" fill="#5c3817" opacity="0.28" />
         </g>
 
         {/* Thorne's Signature */}
         <path
-          d="M 380 720 C 420 680 460 740 500 700 S 550 710 580 690 M 430 730 C 470 730 520 740 560 725"
+          d="M 380 670 C 420 630 460 690 500 650 S 550 660 580 640 M 430 680 C 470 680 520 690 560 675"
           stroke="#261b11"
           strokeWidth="2.5"
           fill="none"
           strokeLinecap="round"
         />
-        <text x="440" y="760" fontFamily="'Special Elite', monospace" fontSize="13" fill="#4d3725" letterSpacing="1">
+        <text x="440" y="710" fontFamily="'Special Elite', monospace" fontSize="13" fill="#4d3725" letterSpacing="1">
           — E. Thorne
         </text>
-
-        {/* CRITICAL PUZZLE CLUE:
-            Three evenly spaced circular coffee-ring stains at the bottom of the page in a horizontal fashion.
-            Visually reads as authentic coffee ring drips, but cleanly forms Morse code (···) = S!
-        */}
-        <g id="bottom-stain-morse-clue" transform="translate(330, 860)">
-          {/* First stain dot */}
-          <g transform="translate(0, 0)">
-            <circle cx="0" cy="0" r="15" fill="url(#stainRing1)" />
-            <circle cx="0" cy="0" r="12" fill="#7a4e21" opacity="0.18" />
-            <circle cx="-1" cy="1" r="5.5" fill="#573310" opacity="0.22" />
-          </g>
-
-          {/* Second stain dot - horizontal spacing */}
-          <g transform="translate(60, 0)">
-            <circle cx="0" cy="0" r="15" fill="url(#stainRing1)" />
-            <circle cx="0" cy="0" r="12" fill="#7a4e21" opacity="0.18" />
-            <circle cx="1" cy="-1" r="5.5" fill="#573310" opacity="0.22" />
-          </g>
-
-          {/* Third stain dot - horizontal spacing */}
-          <g transform="translate(120, 0)">
-            <circle cx="0" cy="0" r="15" fill="url(#stainRing1)" />
-            <circle cx="0" cy="0" r="12" fill="#7a4e21" opacity="0.18" />
-            <circle cx="0" cy="1" r="5.5" fill="#573310" opacity="0.22" />
-          </g>
-
-          {/* Faint coffee splatter speckles adding realism */}
-          <circle cx="18" cy="9" r="1.5" fill="#5c3817" opacity="0.35" />
-          <circle cx="75" cy="-8" r="1.2" fill="#5c3817" opacity="0.3" />
-          <circle cx="138" cy="7" r="1.8" fill="#5c3817" opacity="0.35" />
-        </g>
 
         {/* Bottom edge torn paper marks */}
         <path

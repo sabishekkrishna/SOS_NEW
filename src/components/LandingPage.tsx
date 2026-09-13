@@ -146,13 +146,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
             </div>
             <div>
               <div className="text-xs font-typewriter text-[#c8924b] tracking-wider uppercase">
-                PARTICIPANT FIELD MATERIALS
+                FIELD REFERENCE
               </div>
               <div className="text-lg font-cinzel font-bold text-[#e4dacb]">
-                Cryptographic Reference Charts &amp; Ciphers
+                Morse Code &amp; Phonetic Alphabet Reference
               </div>
               <div className="text-xs text-[#8f7d6c] font-serif-body">
-                Access official Morse code charts, NATO &amp; 1930s phonetic alphabets, and Pigpen cipher grids.
+                Recovered alongside the reels: keeper&apos;s reference card, reprinted here for convenience.
               </div>
             </div>
           </div>
@@ -163,7 +163,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
             onClick={() => onNavigate('/materials')}
             className="w-full sm:w-auto px-5 py-2.5 rounded bg-[#271d16] hover:bg-[#382b20] border border-[#6b523a] text-xs font-cinzel text-[#f4ecd8] hover:text-[#ffd699] transition-colors whitespace-nowrap flex items-center justify-center gap-2 shadow-sm"
           >
-            <span>Open Materials Folio</span>
+            <span>Open Field Reference</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#c8924b]" />
           </button>
         </div>
@@ -176,13 +176,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
             </div>
             <div>
               <div className="text-xs font-typewriter text-[#c8924b] tracking-wider uppercase">
-                FINAL CHAMBER
+                FINAL CODE ENTRY
               </div>
               <div className="text-lg font-cinzel font-bold text-[#e4dacb]">
-                The Inner Vault
+                The Vault
               </div>
               <div className="text-xs text-[#8f7d6c] font-serif-body">
-                Access is sealed until the Archive&apos;s 4-character true name is assembled.
+                Speak the Archive&apos;s true name to unseal the chamber.
               </div>
             </div>
           </div>
@@ -193,7 +193,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
             onClick={() => onNavigate('/vault')}
             className="w-full sm:w-auto px-5 py-2.5 rounded bg-[#201812] hover:bg-[#2c2119] border border-[#4d3929] text-xs font-cinzel text-[#c8924b] hover:text-[#e0a860] transition-colors whitespace-nowrap flex items-center justify-center gap-2"
           >
-            <span>Test Vault Entry</span>
+            <span>Go to The Vault</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

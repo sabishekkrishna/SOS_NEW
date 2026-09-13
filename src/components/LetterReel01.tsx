@@ -114,7 +114,7 @@ export const LetterReel01: React.FC<LetterReel01Props> = ({ onNavigate }) => {
 
         {/* CRITICAL PUZZLE ARTIFACT:
             THE CIPHERTEXT RENDERED AS PART OF THE IMAGE (NOT SELECTABLE HTML TEXT)
-            "WKH YDXOW RSHQV WR VHYHQ"
+            "WKH YDXOW RSHQV WR SDSD"
             Caesar shift 3:
             W -> T
             K -> H
@@ -131,12 +131,11 @@ export const LetterReel01: React.FC<LetterReel01Props> = ({ onNavigate }) => {
             V -> S
             W -> T
             R -> O
-            V -> S
-            H -> E
-            Y -> V
-            H -> E
-            Q -> N
-            Decodes to: "THE VAULT OPENS TO SEVEN" -> 7!
+            S -> P
+            D -> A
+            S -> P
+            D -> A
+            Decodes to: "THE VAULT OPENS TO PAPA"
         */}
         <g id="ciphertext-graphic-letters" transform="translate(400, 275)">
           {/* Shadow of heavy typewriter impression */}
@@ -144,14 +143,14 @@ export const LetterReel01: React.FC<LetterReel01Props> = ({ onNavigate }) => {
             x="2"
             y="2"
             fontFamily="'Special Elite', 'Courier Prime', monospace"
-            fontSize="32"
+            fontSize="30"
             fontWeight="bold"
             fill="#120c06"
             textAnchor="middle"
-            letterSpacing="6"
+            letterSpacing="5"
             opacity="0.9"
           >
-            WKH YDXOW RSHQV WR VHYHQ
+            WKH YDXOW RSHQV WR SDSD
           </text>
 
           {/* Sharp Weathered Ink Text */}
@@ -159,13 +158,13 @@ export const LetterReel01: React.FC<LetterReel01Props> = ({ onNavigate }) => {
             x="0"
             y="0"
             fontFamily="'Special Elite', 'Courier Prime', monospace"
-            fontSize="32"
+            fontSize="30"
             fontWeight="bold"
             fill="#291809"
             textAnchor="middle"
-            letterSpacing="6"
+            letterSpacing="5"
           >
-            WKH YDXOW RSHQV WR VHYHQ
+            WKH YDXOW RSHQV WR SDSD
           </text>
         </g>
 

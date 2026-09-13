@@ -130,7 +130,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
                 ? 'bg-[#2b221a] text-[#f5ebd7] border-[#9a7854] shadow-sm'
                 : 'bg-[#181410] text-[#a89887] border-[#31271f] hover:text-[#e4d8c7] hover:border-[#524235] hover:bg-[#201a14]'
             }`}
-            title="Field Materials: Morse Code, Phonetic Alphabet, and Pigpen Cipher"
+            title="Field Reference: Morse Code & Phonetic Alphabet"
           >
             <BookOpen
               className={`w-3.5 h-3.5 ${
@@ -148,7 +148,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs transition-all whitespace-nowrap border ml-1 ${
               currentPath === '/vault'
                 ? 'bg-[#422915] text-[#ffdfab] border-[#c8924b] shadow-[0_0_12px_rgba(200,146,75,0.25)]'
-                : 'bg-[#1a1410] text-[#827161] border-[#382b21] hover:text-[#b89f88] hover:border-[#4d3c2e]'
+                : 'bg-[#1a1410] text-[#827161] border-[#382b21] hover:text-[#bca48e] hover:border-[#4d3c2e]'
             }`}
             title="Locked — requires the Archive's true code"
           >
@@ -158,7 +158,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
               <Lock className="w-3.5 h-3.5 text-[#827161]" />
             )}
             <span className="font-cinzel tracking-wider">
-              {currentPath === '/vault' ? 'The Vault' : 'Vault [Locked]'}
+              {currentPath === '/vault' ? 'The Vault' : 'Locked — requires the Archive\'s true code'}
             </span>
           </button>
         </nav>

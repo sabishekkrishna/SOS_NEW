@@ -345,158 +345,130 @@ export const RadioReel07: React.FC<RadioReel07Props> = ({ onNavigate }) => {
             <circle cx="1" cy="1" r="2.5" fill="#2a3d30" opacity="0.6" />
           </g>
 
-          {/* ENGRAVED LETTERS: "O S C A R" */}
+          {/* ENGRAVED LETTERS: "E C H O" */}
           {/* Authentic deeply stamped letterforms with inner shadow and weathered highlights */}
-          {/* Note: 'S' and 'A' are partly worn/scratched so they take a moment to confirm */}
+          {/* Two characters ('C' and 'H') are partly worn/scratched so they require a moment to confirm */}
           <g id="engraved-letters" filter="url(#engravedShadow)">
-            {/* Letter 'O' — Clear, stamped groove with minor oxidation */}
+            {/* Letter 'E' — Stamped groove with aged patina */}
             <text
-              x="-58"
+              x="-48"
               y="6"
               fontFamily="'Cinzel', 'Playfair Display', serif"
-              fontSize="23"
+              fontSize="24"
               fontWeight="bold"
               letterSpacing="2"
               fill="#261708"
               textAnchor="middle"
             >
-              O
+              E
             </text>
             <text
-              x="-57.5"
+              x="-47.5"
               y="6.5"
               fontFamily="'Cinzel', 'Playfair Display', serif"
-              fontSize="23"
+              fontSize="24"
               fontWeight="bold"
               letterSpacing="2"
               fill="#f7dfa3"
               opacity="0.3"
               textAnchor="middle"
             >
-              O
+              E
             </text>
 
-            {/* Letter 'S' — Partly worn away and obscured by a scuff and heavy scratch across its middle curve */}
-            <g id="letter-s-worn">
+            {/* Letter 'C' — Partly worn away and obscured by a scuff and diagonal scratch across curve */}
+            <g id="letter-c-worn">
               <text
-                x="-29"
+                x="-16"
                 y="6"
                 fontFamily="'Cinzel', 'Playfair Display', serif"
-                fontSize="23"
-                fontWeight="bold"
-                letterSpacing="2"
-                fill="#362310"
-                opacity="0.82"
-                textAnchor="middle"
-              >
-                S
-              </text>
-              {/* Scuff / abrasion obscuring the top curve */}
-              <ellipse cx="-30" cy="-6" rx="6.5" ry="3.5" fill="#87652c" opacity="0.72" />
-              {/* Deep scratch line cutting right through middle cross of S */}
-              <path
-                d="M -37 -8 L -20 10"
-                stroke="#1f1408"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-              <path
-                d="M -36 -7.5 L -19 10.5"
-                stroke="#e0bf79"
-                strokeWidth="0.8"
-                strokeLinecap="round"
-                opacity="0.55"
-              />
-              {/* Tarnished patina speck directly on S */}
-              <circle cx="-28" cy="2" r="3.2" fill="#2d4232" opacity="0.65" />
-            </g>
-
-            {/* Letter 'C' — Clear stamped letter with slight patina */}
-            <text
-              x="0"
-              y="6"
-              fontFamily="'Cinzel', 'Playfair Display', serif"
-              fontSize="23"
-              fontWeight="bold"
-              letterSpacing="2"
-              fill="#261708"
-              textAnchor="middle"
-            >
-              C
-            </text>
-            <text
-              x="0.5"
-              y="6.5"
-              fontFamily="'Cinzel', 'Playfair Display', serif"
-              fontSize="23"
-              fontWeight="bold"
-              letterSpacing="2"
-              fill="#f7dfa3"
-              opacity="0.3"
-              textAnchor="middle"
-            >
-              C
-            </text>
-
-            {/* Letter 'A' — Partly worn and scratched across crossbar and right diagonal leg */}
-            <g id="letter-a-worn">
-              <text
-                x="29"
-                y="6"
-                fontFamily="'Cinzel', 'Playfair Display', serif"
-                fontSize="23"
+                fontSize="24"
                 fontWeight="bold"
                 letterSpacing="2"
                 fill="#362310"
                 opacity="0.85"
                 textAnchor="middle"
               >
-                A
+                C
               </text>
-              {/* Scratch slicing horizontally through the crossbar and right leg */}
+              {/* Surface scuff over top rim */}
+              <ellipse cx="-16" cy="-5" rx="5" ry="3" fill="#87652c" opacity="0.68" />
+              {/* Deep diagonal scratch across C */}
               <path
-                d="M 20 2 L 39 8"
-                stroke="#1a1005"
-                strokeWidth="1.8"
+                d="M -24 -6 L -8 8"
+                stroke="#1f1408"
+                strokeWidth="1.6"
                 strokeLinecap="round"
               />
               <path
-                d="M 21 2.5 L 40 8.5"
+                d="M -23 -5.5 L -7 8.5"
                 stroke="#dfbc75"
-                strokeWidth="0.7"
+                strokeWidth="0.6"
                 opacity="0.5"
               />
-              {/* Abrasion scuff fading the peak of A */}
-              <ellipse cx="29" cy="-7" rx="5" ry="3" fill="#826129" opacity="0.68" />
-              {/* Verdigris tarnish on right foot */}
-              <circle cx="36" cy="7" r="2.8" fill="#304736" opacity="0.6" />
+              {/* Verdigris tarnish speck on C */}
+              <circle cx="-14" cy="4" r="2.8" fill="#2d4232" opacity="0.6" />
             </g>
 
-            {/* Letter 'R' — Intact stamped letter with authentic wear */}
+            {/* Letter 'H' — Partly worn/scratched across crossbar and left riser */}
+            <g id="letter-h-worn">
+              <text
+                x="16"
+                y="6"
+                fontFamily="'Cinzel', 'Playfair Display', serif"
+                fontSize="24"
+                fontWeight="bold"
+                letterSpacing="2"
+                fill="#362310"
+                opacity="0.82"
+                textAnchor="middle"
+              >
+                H
+              </text>
+              {/* Scratch slicing horizontally through the crossbar */}
+              <path
+                d="M 8 1 L 25 5"
+                stroke="#1a1005"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+              />
+              <path
+                d="M 9 1.5 L 26 5.5"
+                stroke="#dfbc75"
+                strokeWidth="0.6"
+                opacity="0.5"
+              />
+              {/* Abrasion scuff fading the left riser of H */}
+              <ellipse cx="12" cy="-4" rx="4" ry="2.5" fill="#826129" opacity="0.65" />
+              {/* Verdigris patina on right foot */}
+              <circle cx="21" cy="7" r="2.5" fill="#304736" opacity="0.6" />
+            </g>
+
+            {/* Letter 'O' — Clear, stamped groove with minor oxidation */}
             <text
-              x="58"
+              x="48"
               y="6"
               fontFamily="'Cinzel', 'Playfair Display', serif"
-              fontSize="23"
+              fontSize="24"
               fontWeight="bold"
               letterSpacing="2"
               fill="#261708"
               textAnchor="middle"
             >
-              R
+              O
             </text>
             <text
-              x="58.5"
+              x="48.5"
               y="6.5"
               fontFamily="'Cinzel', 'Playfair Display', serif"
-              fontSize="23"
+              fontSize="24"
               fontWeight="bold"
               letterSpacing="2"
               fill="#f7dfa3"
               opacity="0.3"
               textAnchor="middle"
             >
-              R
+              O
             </text>
           </g>
 
