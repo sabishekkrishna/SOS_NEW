@@ -22,29 +22,12 @@ export const VaultPage: React.FC<VaultPageProps> = ({ onNavigate }) => {
       setIsSubmitting(false);
       const normalized = passcode.trim().toUpperCase();
 
-      // Accepted solutions based on archive reels
-      const validCodes = [
-        'HELP',
-        'TVBH',
-        'VBWT',
-        'PAPA',
-        'SDSD',
-        'E',
-        '140',
-        '5',
-        '1405',
-        'PROMISE',
-        'SOS7',
-        'HOPE',
-        'ECHO',
-        'VAULT',
-      ];
-
-      if (validCodes.includes(normalized)) {
+      // STRICT REQUIREMENT: The vault opens ONLY at the code HELP
+      if (normalized === 'HELP') {
         setIsUnlocked(true);
         setFeedbackMessage(null);
       } else {
-        // EXACT prompt requirement: "If incorrect, show a neutral message such as 'Not yet.' with no further hint."
+        // Neutral message with no further hint
         setFeedbackMessage('Not yet.');
       }
     }, 400);
@@ -197,29 +180,13 @@ export const VaultPage: React.FC<VaultPageProps> = ({ onNavigate }) => {
               DISPATCH CLEARED • SEQUENCE CONFIRMED
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-cinzel font-bold text-[#f3ede4] mb-4">
+            <h2 className="text-2xl sm:text-3xl font-cinzel font-bold text-[#f3ede4] mb-3">
               The Vault Chamber Is Open
             </h2>
 
-            <div className="p-6 bg-[#0e0c0a] border border-[#3b2e22] rounded-xl text-left font-serif-body text-[#ded4c7] mb-6 shadow-inner">
-              <div className="text-xs font-typewriter text-[#a89078] border-b border-[#292017] pb-2 mb-3">
-                CERTIFICATE OF ARCHIVAL RECOVERY
-              </div>
-
-              <p className="mb-4 text-sm leading-relaxed text-[#f3ede4]">
-                You have resolved the surviving fragments of Elias Thorne in their proper archival order:
-              </p>
-
-              <div className="space-y-1.5 font-typewriter text-xs text-[#c8924b] mb-2 bg-[#171310] p-3 rounded border border-[#2e2318]">
-                <div>• Reel 09 (The Study) → Ink marks on &quot;The Vault Begins Here&quot; = <strong className="text-white">T, V, B, H</strong></div>
-                <div>• Reel 07 (The Radio) → Isolated single dot on paper tape (.) = <strong className="text-white">E</strong></div>
-                <div>• Reel 03 (The Map Room) → 12 Pins connected by string = <strong className="text-white">12 / L</strong></div>
-                <div>• Reel 01 (The Letter) → Caesar shift 3 of &quot;SDSD&quot; = <strong className="text-white">PAPA (P)</strong></div>
-                <div className="pt-1.5 border-t border-[#3d2e20] text-emerald-400 font-bold">
-                  → ARCHIVE DISPATCH VERIFIED
-                </div>
-              </div>
-            </div>
+            <p className="text-sm font-serif-body text-[#c8b7a6] mb-6">
+              The locking tumblers have disengaged. The archival chamber stands open.
+            </p>
 
             <button
               type="button"
