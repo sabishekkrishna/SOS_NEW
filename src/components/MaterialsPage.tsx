@@ -83,6 +83,19 @@ const NATO_RIGHT = [
   { letter: 'Z', word: 'Zulu' },
 ];
 
+const COLOUR_CODE = [
+  { colour: 'Black', digit: 0, hex: '#18181b', border: '#3f3f46' },
+  { colour: 'Brown', digit: 1, hex: '#78350f', border: '#92400e' },
+  { colour: 'Red', digit: 2, hex: '#dc2626', border: '#b91c1c' },
+  { colour: 'Orange', digit: 3, hex: '#ea580c', border: '#c2410c' },
+  { colour: 'Yellow', digit: 4, hex: '#eab308', border: '#ca8a04' },
+  { colour: 'Green', digit: 5, hex: '#16a34a', border: '#15803d' },
+  { colour: 'Blue', digit: 6, hex: '#2563eb', border: '#1d4ed8' },
+  { colour: 'Violet', digit: 7, hex: '#7c3aed', border: '#6d28d9' },
+  { colour: 'Grey', digit: 8, hex: '#6b7280', border: '#4b5563' },
+  { colour: 'White', digit: 9, hex: '#f4f4f5', border: '#d4d4d8' },
+];
+
 export const MaterialsPage: React.FC<MaterialsPageProps> = ({ onNavigate }) => {
   return (
     <div id="materials-page-container" className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
@@ -269,6 +282,47 @@ export const MaterialsPage: React.FC<MaterialsPageProps> = ({ onNavigate }) => {
                 </tbody>
               </table>
             </div>
+          </div>
+        </section>
+
+        {/* SECTION 3: COLOUR CODE */}
+        <section id="section-colour-code" className="rounded-xl border border-[#3e2e21] bg-[#14100c] p-6 sm:p-8 shadow-xl">
+          <div className="border-b border-[#2b2017] pb-4 mb-6">
+            <h2 className="text-xl sm:text-2xl font-cinzel font-bold text-[#f0e4d2] tracking-wide">
+              Colour Code
+            </h2>
+            <p className="text-xs font-typewriter text-[#8a7563] mt-1">
+              Standard Electronic Component &amp; Resistor Marking Values
+            </p>
+          </div>
+
+          <div className="border border-[#2d2218] rounded-lg overflow-hidden bg-[#18130e] max-w-md">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-[#201812] border-b border-[#2d2218] text-xs font-cinzel text-[#a08b76]">
+                  <th className="py-2.5 px-4 font-semibold">Colour</th>
+                  <th className="py-2.5 px-4 font-semibold text-right">Digit</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#241a12] text-sm">
+                {COLOUR_CODE.map((row) => (
+                  <tr key={row.colour} className="hover:bg-[#201913] transition-colors">
+                    <td className="py-2 px-4 font-cinzel font-bold text-[#f5ebd7] flex items-center gap-3">
+                      <span
+                        className="w-3.5 h-3.5 rounded-full inline-block shrink-0 shadow-sm"
+                        style={{ backgroundColor: row.hex, border: `1px solid ${row.border}` }}
+                      />
+                      <span>{row.colour}</span>
+                    </td>
+                    <td className="py-2 px-4 text-right">
+                      <code className="font-mono font-bold text-base text-[#e8a355] tracking-widest bg-[#100d0a] px-2.5 py-0.5 rounded border border-[#33261a]">
+                        {row.digit}
+                      </code>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
       </div>

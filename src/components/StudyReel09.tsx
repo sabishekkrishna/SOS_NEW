@@ -39,17 +39,18 @@ export const StudyReel09: React.FC<StudyReel09Props> = ({ onNavigate }) => {
             <stop offset="100%" stopColor="#251405" stopOpacity="0.65" />
           </radialGradient>
 
-          {/* Coffee stain texture gradient */}
-          <radialGradient id="stainRing1" cx="45%" cy="45%" r="50%">
-            <stop offset="60%" stopColor="#b37e46" stopOpacity="0.05" />
-            <stop offset="85%" stopColor="#7a4e21" stopOpacity="0.45" />
-            <stop offset="95%" stopColor="#573310" stopOpacity="0.65" />
-            <stop offset="100%" stopColor="#3b2005" stopOpacity="0.1" />
+          {/* Deep Fountain Pen / Iron-Gall Ink Blot Gradient */}
+          <radialGradient id="inkBlotGrad" cx="45%" cy="40%" r="55%">
+            <stop offset="0%" stopColor="#100b07" stopOpacity="0.95" />
+            <stop offset="55%" stopColor="#1e140c" stopOpacity="0.85" />
+            <stop offset="82%" stopColor="#362214" stopOpacity="0.6" />
+            <stop offset="94%" stopColor="#57371f" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="#57371f" stopOpacity="0" />
           </radialGradient>
 
-          {/* Water splatter filter */}
-          <filter id="inkRoughness" x="0%" y="0%" width="100%" height="100%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+          {/* Ink capillary absorption rough edge filter */}
+          <filter id="inkBleedRoughness" x="-30%" y="-30%" width="160%" height="160%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="3" result="noise" />
             <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" />
           </filter>
         </defs>
@@ -68,73 +69,125 @@ export const StudyReel09: React.FC<StudyReel09Props> = ({ onNavigate }) => {
         {/* Left red margin line */}
         <line x1="120" y1="60" x2="120" y2="940" stroke="#b86958" strokeWidth="1" strokeOpacity="0.4" />
 
-        {/* Large Water damage faint bloom top-left */}
-        <path
-          d="M 40 40 Q 180 80 220 190 Q 200 280 110 260 Q 50 240 40 40 Z"
-          fill="#cbb07a"
-          opacity="0.25"
-        />
-
-        {/* Archival Header Stamp */}
-        <g opacity="0.65" transform="translate(480, 50)">
-          <rect x="0" y="0" width="220" height="60" fill="none" stroke="#7a2a1d" strokeWidth="1.5" strokeDasharray="6,2" />
-          <text x="110" y="24" fontFamily="'Special Elite', monospace" fontSize="11" fill="#7a2a1d" textAnchor="middle" letterSpacing="2">
-            SURVEY LOG — 1932
-          </text>
-          <text x="110" y="44" fontFamily="'Special Elite', monospace" fontSize="10" fill="#7a2a1d" textAnchor="middle">
-            REEL IX • DESK PORTFOLIO
-          </text>
+        {/* The ONLY text on the page: "The Vault Begins Here" */}
+        <g
+          fill="#24170d"
+          fontFamily="'Playfair Display', Georgia, serif"
+          fontSize="44"
+          fontStyle="italic"
+          fontWeight="bold"
+        >
+          <text x="150" y="490">The</text>
+          <text x="275" y="490">Vault</text>
+          <text x="430" y="490">Begins</text>
+          <text x="605" y="490">Here</text>
         </g>
 
-        {/* Thorne's Date & Location */}
-        <text x="135" y="115" fontFamily="'Playfair Display', serif" fontStyle="italic" fontSize="18" fill="#38291b">
-          October 14th — The Study, midnight
-        </text>
-
-        {/* Thorne's Handwritten Note */}
-        <g fill="#291e14" fontFamily="'Playfair Display', Georgia, serif" fontSize="23" fontStyle="italic">
-          <text x="145" y="220">They think I mapped mountains and rivers.</text>
-          <text x="145" y="270">I mapped something else — a promise.</text>
-          <text x="145" y="340">If you&apos;ve come this far, you already</text>
-          <text x="145" y="390">understand: nothing here is wasted,</text>
-          <text x="145" y="440">not even a stain on the page.</text>
-        </g>
-
-        {/* CRITICAL PUZZLE CLUE:
-            Four coffee-ring stain dots placed horizontally below the paragraphs (Morse code .... = H)
-            Evenly spaced horizontally across x = 265, 355, 445, 535 at y = 525
+        {/* CRITICAL PUZZLE ARTIFACT:
+            The four stains are exclusively on the starting letter of each word:
+            The, Vault, Begins, Here
+            Rendered as authentic fountain-pen ink stains / ink blots.
+            First letters:
+            'T' in The    -> x=164, y=472
+            'V' in Vault  -> x=290, y=472
+            'B' in Begins -> x=446, y=472
+            'H' in Here   -> x=624, y=472
         */}
-        <g id="horizontal-coffee-stains" transform="translate(0, 525)">
-          {[265, 355, 445, 535].map((xPos, idx) => (
-            <g key={idx} transform={`translate(${xPos}, 0)`}>
-              {/* Outer faint dried ring */}
-              <circle cx="0" cy="0" r="17" fill="url(#stainRing1)" />
-              {/* Coffee ring darker edge */}
-              <circle cx="0" cy="0" r="16.5" fill="none" stroke="#683d16" strokeWidth="1.6" opacity="0.65" />
-              {/* Secondary irregular wash */}
-              <circle cx="0.5" cy="-0.5" r="13" fill="#805224" opacity="0.16" />
-              <circle cx="-1" cy="1" r="7" fill="#523212" opacity="0.2" />
-              {/* Tiny dried coffee rim grain */}
-              <circle cx="12" cy="10" r="1.2" fill="#422509" opacity="0.45" />
+        <g id="ink-initial-letter-stains">
+          {[
+            {
+              x: 164,
+              y: 472,
+              r: 15,
+              id: 'ink-stain-t',
+              spatters: [{ dx: -11, dy: -10, r: 1.0 }, { dx: 12, dy: 8, r: 1.2 }, { dx: -8, dy: 11, r: 0.7 }],
+            },
+            {
+              x: 290,
+              y: 472,
+              r: 15,
+              id: 'ink-stain-v',
+              spatters: [{ dx: -12, dy: 8, r: 1.2 }, { dx: 11, dy: -9, r: 0.9 }, { dx: 6, dy: 13, r: 0.8 }],
+            },
+            {
+              x: 446,
+              y: 472,
+              r: 15.5,
+              id: 'ink-stain-b',
+              spatters: [{ dx: 13, dy: 7, r: 1.1 }, { dx: -10, dy: -11, r: 0.8 }, { dx: -7, dy: 12, r: 1.0 }],
+            },
+            {
+              x: 624,
+              y: 472,
+              r: 15.5,
+              id: 'ink-stain-h',
+              spatters: [{ dx: 13, dy: -8, r: 1.1 }, { dx: -12, dy: 9, r: 0.9 }, { dx: 8, dy: 13, r: 0.8 }],
+            },
+          ].map((stain, idx) => (
+            <g key={idx} id={stain.id} transform={`translate(${stain.x}, ${stain.y})`}>
+              {/* Soft capillary ink bleed perimeter */}
+              <circle
+                cx="0"
+                cy="0"
+                r={stain.r + 2}
+                fill="url(#inkBlotGrad)"
+                opacity="0.45"
+                filter="url(#inkBleedRoughness)"
+              />
+              {/* Main dense wet ink blot body */}
+              <ellipse
+                cx="0.5"
+                cy="-0.5"
+                rx={stain.r}
+                ry={stain.r * 0.92}
+                fill="url(#inkBlotGrad)"
+                filter="url(#inkBleedRoughness)"
+              />
+              {/* Deep concentrated ink core */}
+              <ellipse
+                cx="-0.5"
+                cy="0.5"
+                rx={stain.r * 0.55}
+                ry={stain.r * 0.52}
+                fill="#150e09"
+                opacity="0.82"
+              />
+              {/* Microscopic ink spatters / flickers from the pen nib */}
+              {stain.spatters.map((sp, sIdx) => (
+                <circle
+                  key={sIdx}
+                  cx={sp.dx}
+                  cy={sp.dy}
+                  r={sp.r}
+                  fill="#1b120c"
+                  opacity="0.7"
+                />
+              ))}
             </g>
           ))}
-          {/* Faint coffee splatter speckles */}
-          <circle cx="310" cy="12" r="1.2" fill="#5c3817" opacity="0.3" />
-          <circle cx="400" cy="-8" r="1.5" fill="#5c3817" opacity="0.35" />
-          <circle cx="490" cy="10" r="1.1" fill="#5c3817" opacity="0.28" />
         </g>
 
-        {/* Thorne's Signature */}
-        <path
-          d="M 380 670 C 420 630 460 690 500 650 S 550 660 580 640 M 430 680 C 470 680 520 690 560 675"
-          stroke="#261b11"
-          strokeWidth="2.5"
-          fill="none"
-          strokeLinecap="round"
-        />
-        <text x="440" y="710" fontFamily="'Special Elite', monospace" fontSize="13" fill="#4d3725" letterSpacing="1">
-          — E. Thorne
-        </text>
+        {/* Ellias Thorne signature at one corner (bottom right) */}
+        <g id="ellias-thorne-signature" transform="translate(450, 750)">
+          <path
+            d="M 10 30 C 50 -10 90 50 130 10 S 180 20 210 0 M 60 40 C 100 40 150 50 190 35"
+            stroke="#261b11"
+            strokeWidth="2.4"
+            fill="none"
+            strokeLinecap="round"
+          />
+          <text
+            x="85"
+            y="70"
+            fontFamily="'Special Elite', 'Playfair Display', cursive, serif"
+            fontSize="18"
+            fill="#3a2717"
+            letterSpacing="1"
+            fontStyle="italic"
+          >
+            — Ellias Thorne
+          </text>
+        </g>
 
         {/* Bottom edge torn paper marks */}
         <path

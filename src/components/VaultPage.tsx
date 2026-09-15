@@ -23,7 +23,22 @@ export const VaultPage: React.FC<VaultPageProps> = ({ onNavigate }) => {
       const normalized = passcode.trim().toUpperCase();
 
       // Accepted solutions based on archive reels
-      const validCodes = ['HELP', 'PAPA', 'SDSD', 'PROMISE', 'SOS7', 'HOPE', 'ECHO'];
+      const validCodes = [
+        'HELP',
+        'TVBH',
+        'VBWT',
+        'PAPA',
+        'SDSD',
+        'E',
+        '140',
+        '5',
+        '1405',
+        'PROMISE',
+        'SOS7',
+        'HOPE',
+        'ECHO',
+        'VAULT',
+      ];
 
       if (validCodes.includes(normalized)) {
         setIsUnlocked(true);
@@ -196,12 +211,12 @@ export const VaultPage: React.FC<VaultPageProps> = ({ onNavigate }) => {
               </p>
 
               <div className="space-y-1.5 font-typewriter text-xs text-[#c8924b] mb-2 bg-[#171310] p-3 rounded border border-[#2e2318]">
-                <div>• Reel 09 (The Study) → 4 dots horizontally (....) = <strong className="text-white">H</strong></div>
-                <div>• Reel 07 (The Radio) → Weathered nameplate &quot;ECHO&quot; = <strong className="text-white">E</strong></div>
-                <div>• Reel 03 (The Map Room) → 12 Pins connected by string = <strong className="text-white">L</strong></div>
+                <div>• Reel 09 (The Study) → Ink marks on &quot;The Vault Begins Here&quot; = <strong className="text-white">T, V, B, H</strong></div>
+                <div>• Reel 07 (The Radio) → Isolated single dot on paper tape (.) = <strong className="text-white">E</strong></div>
+                <div>• Reel 03 (The Map Room) → 12 Pins connected by string = <strong className="text-white">12 / L</strong></div>
                 <div>• Reel 01 (The Letter) → Caesar shift 3 of &quot;SDSD&quot; = <strong className="text-white">PAPA (P)</strong></div>
                 <div className="pt-1.5 border-t border-[#3d2e20] text-emerald-400 font-bold">
-                  → ARCHIVE CODE: HELP
+                  → ARCHIVE DISPATCH VERIFIED
                 </div>
               </div>
             </div>
