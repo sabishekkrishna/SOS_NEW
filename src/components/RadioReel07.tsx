@@ -337,7 +337,7 @@ export const RadioReel07: React.FC<RadioReel07Props> = ({ onNavigate }) => {
         </p>
 
         <blockquote className="text-base sm:text-lg font-serif-body italic text-[#eee4d7] leading-relaxed border-l-2 border-[#c8924b] pl-4 my-2">
-          &ldquo;A wire that speaks for itself doesn&apos;t need company. Even alone, a mark is still a letter.&rdquo;
+          &ldquo;A wire that speaks for itself doesn&apos;t need company.
         </blockquote>
       </div>
 

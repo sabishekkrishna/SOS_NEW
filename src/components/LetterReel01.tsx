@@ -8,6 +8,7 @@ interface LetterReel01Props {
 }
 
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const INNER_WHEEL = 'Q M A Z T R E K B Y U P L C H W D N X F I O V S G J'.split(' ');
 
 export const LetterReel01: React.FC<LetterReel01Props> = ({ onNavigate }) => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -150,7 +151,7 @@ export const LetterReel01: React.FC<LetterReel01Props> = ({ onNavigate }) => {
             letterSpacing="5"
             opacity="0.9"
           >
-            WKH YDXOW RSHQV WR SDSD
+            VUK GZSHV NXKDO ZV XZXZ
           </text>
 
           {/* Sharp Weathered Ink Text */}
@@ -164,7 +165,7 @@ export const LetterReel01: React.FC<LetterReel01Props> = ({ onNavigate }) => {
             textAnchor="middle"
             letterSpacing="5"
           >
-            WKH YDXOW RSHQV WR SDSD
+            VUK GZSHV NXKDO ZV XZXZ
           </text>
         </g>
 
@@ -344,14 +345,14 @@ export const LetterReel01: React.FC<LetterReel01Props> = ({ onNavigate }) => {
                 <circle cx="150" cy="150" r="100" fill="#292018" stroke="#75593c" strokeWidth="2" />
                 <circle cx="150" cy="150" r="65" fill="#1a140f" stroke="#4d3926" strokeWidth="1.5" />
 
-                {ALPHABET.map((char, i) => {
+                {INNER_WHEEL.map((char, i) => {
                   const angle = (i * 360) / 26 - 90;
                   const rad = (angle * Math.PI) / 180;
                   const x = 150 + 82 * Math.cos(rad);
                   const y = 150 + 82 * Math.sin(rad);
                   return (
                     <text
-                      key={`inner-${char}`}
+                      key={`inner-${char}-${i}`}
                       x={x}
                       y={y}
                       fill="#eddcc7"
@@ -405,28 +406,28 @@ export const LetterReel01: React.FC<LetterReel01Props> = ({ onNavigate }) => {
                 <span className="text-[#c8924b]">Cipher W</span>
                 <span>→</span>
                 <span className="font-bold text-[#f5ebd7]">
-                  {ALPHABET[(22 - shiftOffset + 26) % 26]}
+                  {INNER_WHEEL[((22 - shiftOffset) % 26 + 26) % 26]}
                 </span>
               </div>
               <div className="flex justify-between border-b border-[#292018] py-0.5">
                 <span className="text-[#c8924b]">Cipher K</span>
                 <span>→</span>
                 <span className="font-bold text-[#f5ebd7]">
-                  {ALPHABET[(10 - shiftOffset + 26) % 26]}
+                  {INNER_WHEEL[((10 - shiftOffset) % 26 + 26) % 26]}
                 </span>
               </div>
               <div className="flex justify-between border-b border-[#292018] py-0.5">
                 <span className="text-[#c8924b]">Cipher H</span>
                 <span>→</span>
                 <span className="font-bold text-[#f5ebd7]">
-                  {ALPHABET[(7 - shiftOffset + 26) % 26]}
+                  {INNER_WHEEL[((7 - shiftOffset) % 26 + 26) % 26]}
                 </span>
               </div>
               <div className="flex justify-between border-b border-[#292018] py-0.5">
                 <span className="text-[#c8924b]">Cipher Y</span>
                 <span>→</span>
                 <span className="font-bold text-[#f5ebd7]">
-                  {ALPHABET[(24 - shiftOffset + 26) % 26]}
+                  {INNER_WHEEL[((24 - shiftOffset) % 26 + 26) % 26]}
                 </span>
               </div>
             </div>
