@@ -295,15 +295,15 @@ export const MapRoomReel03: React.FC<MapRoomReel03Props> = ({ onNavigate }) => {
             onClick={() => onNavigate('/archive/reel-07')}
             className="hover:text-[#c8924b] transition-colors flex items-center gap-1"
           >
-            <ArrowLeft className="w-3.5 h-3.5" /> Previous Fragment
+            <ArrowLeft className="w-3.5 h-3.5" /> Previous: Reel VII — The Radio
           </button>
           <span>•</span>
           <button
             type="button"
-            onClick={() => onNavigate('/archive/reel-01')}
-            className="hover:text-[#c8924b] transition-colors flex items-center gap-1"
+            onClick={() => onNavigate('/archive/reel-09')}
+            className="hover:text-[#c8924b] transition-colors flex items-center gap-1 font-bold text-[#c8924b]"
           >
-            Next Fragment <ArrowRight className="w-3.5 h-3.5" />
+            Next: Reel IX — The Study <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>

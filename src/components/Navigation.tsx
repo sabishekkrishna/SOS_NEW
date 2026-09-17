@@ -4,15 +4,6 @@ import { Lock, Archive, Compass, Radio, FileText, Map, KeyRound, BookOpen } from
 
 export const EXHIBITS: ExhibitMeta[] = [
   {
-    id: 'radio',
-    path: '/archive/reel-07',
-    reelNumber: '07',
-    reelRoman: 'VII',
-    title: 'The Radio',
-    subtitle: 'Rebuilt receiver cabinet',
-    thumbnailDesc: 'Vintage broadcast receiver with aged brass naming plate',
-  },
-  {
     id: 'letter',
     path: '/archive/reel-01',
     reelNumber: '01',
@@ -22,13 +13,13 @@ export const EXHIBITS: ExhibitMeta[] = [
     thumbnailDesc: 'Burned correspondence with enciphered message',
   },
   {
-    id: 'study',
-    path: '/archive/reel-09',
-    reelNumber: '09',
-    reelRoman: 'IX',
-    title: 'The Study',
-    subtitle: 'Field desk journal leaf',
-    thumbnailDesc: "Bird's-eye view of study writing desk with letter and flickering study lamp",
+    id: 'radio',
+    path: '/archive/reel-07',
+    reelNumber: '07',
+    reelRoman: 'VII',
+    title: 'The Radio',
+    subtitle: 'Thorne\'s Desk: "Observe carefully"',
+    thumbnailDesc: 'The rain-soaked manuscript, vintage brass desk lamp, and nocturnal luminescence',
   },
   {
     id: 'map-room',
@@ -38,6 +29,15 @@ export const EXHIBITS: ExhibitMeta[] = [
     title: 'The Map Room',
     subtitle: 'Tactical survey wall display',
     thumbnailDesc: 'Unlabeled chart bound with taut strings and brass pins',
+  },
+  {
+    id: 'study',
+    path: '/archive/reel-09',
+    reelNumber: '09',
+    reelRoman: 'IX',
+    title: 'The Study',
+    subtitle: 'Field desk journal leaf',
+    thumbnailDesc: "Bird's-eye view of study writing desk with letter and flickering study lamp",
   },
 ];
 
@@ -65,7 +65,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
   return (
     <header
       id="archive-header-nav"
-      className="sticky top-0 z-40 w-full border-b border-[#362b21] bg-[#12100e]/95 backdrop-blur-md px-4 sm:px-8 py-3.5"
+      className="sticky top-0 z-50 w-full border-b border-[#362b21] bg-[#12100e]/95 backdrop-blur-md px-4 sm:px-8 py-3.5"
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3">
         {/* Brand / Archive Title */}

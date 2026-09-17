@@ -843,18 +843,18 @@ export const StudyReel09: React.FC<StudyReel09Props> = ({ onNavigate }) => {
         <div className="flex items-center gap-3">
           <button
             type="button"
-            onClick={() => onNavigate('/')}
+            onClick={() => onNavigate('/archive/reel-03')}
             className="hover:text-[#c8924b] transition-colors flex items-center gap-1"
           >
-            <ArrowLeft className="w-3.5 h-3.5" /> Back to Archive
+            <ArrowLeft className="w-3.5 h-3.5" /> Previous: Reel III — The Map Room
           </button>
           <span>•</span>
           <button
             type="button"
-            onClick={() => onNavigate('/archive/reel-07')}
-            className="hover:text-[#c8924b] transition-colors flex items-center gap-1"
+            onClick={() => onNavigate('/vault')}
+            className="hover:text-[#c8924b] transition-colors flex items-center gap-1 font-bold text-[#c8924b]"
           >
-            Next Fragment <ArrowRight className="w-3.5 h-3.5" />
+            Proceed to Vault <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>

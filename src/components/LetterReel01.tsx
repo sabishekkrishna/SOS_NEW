@@ -444,18 +444,18 @@ export const LetterReel01: React.FC<LetterReel01Props> = ({ onNavigate }) => {
         <div className="flex items-center gap-3">
           <button
             type="button"
-            onClick={() => onNavigate('/archive/reel-03')}
+            onClick={() => onNavigate('/')}
             className="hover:text-[#c8924b] transition-colors flex items-center gap-1"
           >
-            <ArrowLeft className="w-3.5 h-3.5" /> Previous Fragment
+            <ArrowLeft className="w-3.5 h-3.5" /> Archive Index
           </button>
           <span>•</span>
           <button
             type="button"
-            onClick={() => onNavigate('/vault')}
+            onClick={() => onNavigate('/archive/reel-07')}
             className="hover:text-[#c8924b] transition-colors flex items-center gap-1 font-bold text-[#c8924b]"
           >
-            Proceed to Vault <ArrowRight className="w-3.5 h-3.5" />
+            Next: Reel VII — The Radio <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>

@@ -11,20 +11,20 @@ import { MaterialsPage } from './components/MaterialsPage';
 
 const VALID_ROUTES: RoutePath[] = [
   '/',
-  '/archive/reel-09',
+  '/archive/reel-01',
   '/archive/reel-07',
   '/archive/reel-03',
-  '/archive/reel-01',
+  '/archive/reel-09',
   '/materials',
   '/vault',
 ];
 
 const ROUTE_TITLES: Record<RoutePath, string> = {
   '/': 'The Thorne Archive — Restricted Access',
-  '/archive/reel-09': 'Reel IX — The Study',
+  '/archive/reel-01': 'Reel I — The Letter',
   '/archive/reel-07': 'Reel VII — The Radio',
   '/archive/reel-03': 'Reel III — The Map Room',
-  '/archive/reel-01': 'Reel I — The Letter',
+  '/archive/reel-09': 'Reel IX — The Study',
   '/materials': 'The Thorne Archive — Field Reference',
   '/vault': 'The Vault',
 };
@@ -82,10 +82,10 @@ export default function App() {
       {/* Main View Area */}
       <main className="flex-1">
         {currentPath === '/' && <LandingPage onNavigate={navigateTo} />}
-        {currentPath === '/archive/reel-09' && <StudyReel09 onNavigate={navigateTo} />}
+        {currentPath === '/archive/reel-01' && <LetterReel01 onNavigate={navigateTo} />}
         {currentPath === '/archive/reel-07' && <RadioReel07 onNavigate={navigateTo} />}
         {currentPath === '/archive/reel-03' && <MapRoomReel03 onNavigate={navigateTo} />}
-        {currentPath === '/archive/reel-01' && <LetterReel01 onNavigate={navigateTo} />}
+        {currentPath === '/archive/reel-09' && <StudyReel09 onNavigate={navigateTo} />}
         {currentPath === '/materials' && <MaterialsPage onNavigate={navigateTo} />}
         {currentPath === '/vault' && <VaultPage onNavigate={navigateTo} />}
       </main>

@@ -1,9 +1,9 @@
 export type RoutePath =
   | '/'
-  | '/archive/reel-09'
+  | '/archive/reel-01'
   | '/archive/reel-07'
   | '/archive/reel-03'
-  | '/archive/reel-01'
+  | '/archive/reel-09'
   | '/materials'
   | '/vault';
 
