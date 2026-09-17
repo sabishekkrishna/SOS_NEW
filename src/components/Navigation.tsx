@@ -28,7 +28,7 @@ export const EXHIBITS: ExhibitMeta[] = [
     reelRoman: 'IX',
     title: 'The Study',
     subtitle: 'Field desk journal leaf',
-    thumbnailDesc: "Bird's-eye view of study writing desk with letter and socket bulb",
+    thumbnailDesc: "Bird's-eye view of study writing desk with letter and flickering study lamp",
   },
   {
     id: 'map-room',

@@ -60,6 +60,43 @@ export const StudyReel09: React.FC<StudyReel09Props> = ({ onNavigate }) => {
                 }
               }
 
+              /* Continuously Flickering Study Lamp (Vintage electrical/filament flicker) */
+              @keyframes studyLampAlwaysFlicker {
+                0% { opacity: 0.90; }
+                3% { opacity: 0.97; }
+                5% { opacity: 0.78; }
+                7% { opacity: 0.94; }
+                12% { opacity: 0.86; }
+                15% { opacity: 0.98; }
+                19% { opacity: 0.74; }
+                21% { opacity: 0.91; }
+                26% { opacity: 0.88; }
+                30% { opacity: 0.96; }
+                34% { opacity: 0.80; }
+                36% { opacity: 0.93; }
+                41% { opacity: 0.87; }
+                46% { opacity: 0.99; }
+                50% { opacity: 0.76; }
+                52% { opacity: 0.92; }
+                57% { opacity: 0.85; }
+                62% { opacity: 0.97; }
+                66% { opacity: 0.79; }
+                68% { opacity: 0.94; }
+                73% { opacity: 0.88; }
+                77% { opacity: 0.75; }
+                79% { opacity: 0.96; }
+                84% { opacity: 0.90; }
+                88% { opacity: 0.78; }
+                90% { opacity: 0.95; }
+                94% { opacity: 0.86; }
+                97% { opacity: 0.98; }
+                100% { opacity: 0.90; }
+              }
+
+              .lamp-always-flickering {
+                animation: studyLampAlwaysFlicker 2.4s steps(1, end) infinite;
+              }
+
               .bulb-blinking-lit {
                 animation: bulbPulsePattern 4.12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
               }
@@ -135,6 +172,40 @@ export const StudyReel09: React.FC<StudyReel09Props> = ({ onNavigate }) => {
             <stop offset="75%" stopColor="#1e5833" />
             <stop offset="100%" stopColor="#143c22" />
           </linearGradient>
+
+          {/* Lamp Illuminated Green Glass Shade (Subsurface translucency when lit) */}
+          <linearGradient id="lampGreenShadeLit" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#194827" />
+            <stop offset="25%" stopColor="#297341" />
+            <stop offset="50%" stopColor="#439f60" />
+            <stop offset="75%" stopColor="#297341" />
+            <stop offset="100%" stopColor="#194827" />
+          </linearGradient>
+
+          {/* Glowing Incandescent Bulb Core under Lamp Shade */}
+          <radialGradient id="lampIncandescentCore" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+            <stop offset="30%" stopColor="#fff3bf" stopOpacity="0.95" />
+            <stop offset="65%" stopColor="#ffb336" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#ff7700" stopOpacity="0" />
+          </radialGradient>
+
+          {/* Warm Study Lamp Desk Light Pool (Spreads over desk and letter) */}
+          <radialGradient id="studyLampLightPool" cx="24%" cy="30%" r="75%">
+            <stop offset="0%" stopColor="#fff8e7" stopOpacity="0.44" />
+            <stop offset="26%" stopColor="#fed989" stopOpacity="0.28" />
+            <stop offset="56%" stopColor="#e5a13c" stopOpacity="0.14" />
+            <stop offset="82%" stopColor="#af6310" stopOpacity="0.04" />
+            <stop offset="100%" stopColor="#000000" stopOpacity="0" />
+          </radialGradient>
+
+          {/* Soft Parchment Warm Light Wash from Flickering Study Lamp */}
+          <radialGradient id="studyLampParchmentWash" cx="16%" cy="28%" r="85%">
+            <stop offset="0%" stopColor="#ffeaad" stopOpacity="0.14" />
+            <stop offset="42%" stopColor="#f8cb6e" stopOpacity="0.08" />
+            <stop offset="80%" stopColor="#e59f38" stopOpacity="0.02" />
+            <stop offset="100%" stopColor="#000000" stopOpacity="0" />
+          </radialGradient>
 
           {/* Porcelain Socket Gradient */}
           <radialGradient id="socketBaseGrad" cx="45%" cy="40%" r="60%">
@@ -213,11 +284,36 @@ export const StudyReel09: React.FC<StudyReel09Props> = ({ onNavigate }) => {
         <rect x="0" y="0" width="1200" height="800" fill="url(#deskVignette)" pointerEvents="none" />
 
         {/* ========================================================================= */}
+        {/* STUDY LAMP WARM LIGHT BEAM (ALWAYS FLICKERING ACROSS DESK & LETTER)       */}
+        {/* ========================================================================= */}
+        <g id="study-lamp-light-beam" className="lamp-always-flickering" pointerEvents="none">
+          {/* Broad warm illumination spread across desk pad and onto letter */}
+          <ellipse
+            cx="480"
+            cy="330"
+            rx="370"
+            ry="270"
+            transform="rotate(-6 480 330)"
+            fill="url(#studyLampLightPool)"
+          />
+          {/* Intense warm core illumination pool near lamp shade */}
+          <ellipse
+            cx="270"
+            cy="245"
+            rx="140"
+            ry="105"
+            fill="#ffd878"
+            opacity="0.18"
+            filter="url(#stainBlur)"
+          />
+        </g>
+
+        {/* ========================================================================= */}
         {/* 2. DESK ACCESSORIES (LEFT REGION) - OUTSIDE THE LETTER AREA                */}
         {/* ========================================================================= */}
 
-        {/* Banker's Table Lamp (Top-Down Bird's-Eye View) */}
-        <g id="table-lamp" transform="translate(135, 175)" filter="url(#objectDropShadow)">
+        {/* Banker's Table Lamp (Top-Down Bird's-Eye View) near the letter */}
+        <g id="table-lamp" transform="translate(160, 195) rotate(14)" filter="url(#objectDropShadow)">
           {/* Heavy brass stepped circular base */}
           <circle cx="0" cy="0" r="48" fill="url(#lampBrassGrad)" stroke="#2b1a0c" strokeWidth="2" />
           <circle cx="0" cy="0" r="38" fill="#5c3f1a" stroke="#1f1207" strokeWidth="1.2" />
@@ -243,9 +339,20 @@ export const StudyReel09: React.FC<StudyReel09Props> = ({ onNavigate }) => {
             width="136"
             height="52"
             rx="14"
-            fill="url(#lampGreenShade)"
+            fill="url(#lampGreenShadeLit)"
             stroke="#0d2415"
             strokeWidth="1.8"
+          />
+          {/* Translucent emerald glass inner glow that flickers subtly */}
+          <rect
+            x="-64"
+            y="58"
+            width="128"
+            height="44"
+            rx="10"
+            fill="#65e896"
+            opacity="0.18"
+            className="lamp-always-flickering"
           />
           {/* Glass shade specular top highlight */}
           <rect
@@ -254,12 +361,22 @@ export const StudyReel09: React.FC<StudyReel09Props> = ({ onNavigate }) => {
             width="112"
             height="10"
             rx="5"
-            fill="#5be38c"
+            fill="#c2ffdf"
             opacity="0.25"
           />
           {/* Shade brass top finial bracket */}
           <circle cx="0" cy="80" r="7" fill="url(#lampBrassGrad)" stroke="#1a1006" strokeWidth="1" />
           <line x1="-30" y1="80" x2="30" y2="80" stroke="url(#lampBrassGrad)" strokeWidth="3" />
+
+          {/* Under-shade warm illuminated bulb aperture facing towards desk/letter */}
+          <g className="lamp-always-flickering">
+            {/* Warm incandescent bulb glow shining out from under shade rim */}
+            <ellipse cx="0" cy="98" rx="60" ry="14" fill="url(#lampIncandescentCore)" opacity="0.88" />
+            <ellipse cx="0" cy="96" rx="34" ry="7" fill="#fffbe0" opacity="0.95" />
+            {/* Glowing incandescent tubular bulb visible under shade */}
+            <rect x="-24" y="92" width="48" height="7" rx="3.5" fill="#ffffff" filter="drop-shadow(0 0 5px #ffaa22)" />
+            <line x1="-20" y1="95.5" x2="20" y2="95.5" stroke="#fff4cf" strokeWidth="1.5" />
+          </g>
         </g>
 
         {/* Glass Inkwell & Fine Dip Pen */}
@@ -335,6 +452,18 @@ export const StudyReel09: React.FC<StudyReel09Props> = ({ onNavigate }) => {
             stroke="#755227"
             strokeWidth="1"
             opacity="0.32"
+          />
+
+          {/* Warm incandescent wash on parchment cast by flickering study lamp */}
+          <rect
+            x="0"
+            y="0"
+            width="510"
+            height="680"
+            rx="4"
+            fill="url(#studyLampParchmentWash)"
+            className="lamp-always-flickering"
+            pointerEvents="none"
           />
 
           {/* Faint paper ruled guidelines (centered symmetrically) */}
@@ -735,7 +864,7 @@ export const StudyReel09: React.FC<StudyReel09Props> = ({ onNavigate }) => {
         isOpen={isLightboxOpen}
         onClose={() => setIsLightboxOpen(false)}
         title="Reel IX — Bird's-Eye View: Thorne's Study Desk"
-        caption="High-resolution scan of Thorne's study table from above. Notice the centered letter with subtle paper stains, desktop instruments, and the subtle socket indicator LED."
+        caption="High-resolution scan of Thorne's study table from above. Notice the centered letter with subtle paper stains illuminated by the flickering study lamp, desktop instruments, and the subtle socket indicator LED."
       >
         <div className="flex items-center justify-center p-2 bg-[#0a0704] rounded-lg overflow-x-auto w-full">
           {renderJournalPage(true)}
