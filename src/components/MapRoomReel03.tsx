@@ -36,15 +36,10 @@ export const MapRoomReel03: React.FC<MapRoomReel03Props> = ({ onNavigate }) => {
 
   // SVG Wall Map Specimen
   const renderMapSpecimen = (isZoomed: boolean = false) => {
-    const width = isZoomed ? 860 : 680;
-    const height = isZoomed ? 680 : 540;
-
     return (
       <svg
         viewBox="0 0 800 600"
-        width={width}
-        height={height}
-        className="max-w-full h-auto drop-shadow-2xl select-none"
+        className={`max-w-full h-auto drop-shadow-2xl select-none ${isZoomed ? 'w-full' : 'w-full'}`}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>

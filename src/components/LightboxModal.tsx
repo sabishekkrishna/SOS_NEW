@@ -23,6 +23,10 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
   const [highContrast, setHighContrast] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Touch tracking refs (avoid state re-renders during gesture)
+  const touchStartRef = useRef<{ x: number; y: number; panX: number; panY: number } | null>(null);
+  const pinchStartRef = useRef<{ dist: number; zoom: number } | null>(null);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isOpen) return;
@@ -55,6 +59,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
 
   if (!isOpen) return null;
 
+  // ── Mouse handlers ──────────────────────────────────────────────────────────
   const handleMouseDown = (e: React.MouseEvent) => {
     if (zoom <= 1) return;
     setIsDragging(true);
@@ -73,28 +78,83 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
     setIsDragging(false);
   };
 
+  // ── Touch helpers ────────────────────────────────────────────────────────────
+  const getTouchDist = (touches: React.TouchList) => {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.hypot(dx, dy);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.stopPropagation();
+    if (e.touches.length === 1) {
+      // Single finger — begin pan
+      touchStartRef.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY,
+        panX: pan.x,
+        panY: pan.y,
+      };
+      pinchStartRef.current = null;
+      setIsDragging(true);
+    } else if (e.touches.length === 2) {
+      // Two fingers — begin pinch
+      pinchStartRef.current = { dist: getTouchDist(e.touches), zoom };
+      touchStartRef.current = null;
+      setIsDragging(false);
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.stopPropagation();
+    if (e.touches.length === 1 && touchStartRef.current) {
+      // Pan
+      const dx = e.touches[0].clientX - touchStartRef.current.x;
+      const dy = e.touches[0].clientY - touchStartRef.current.y;
+      setPan({
+        x: touchStartRef.current.panX + dx,
+        y: touchStartRef.current.panY + dy,
+      });
+    } else if (e.touches.length === 2 && pinchStartRef.current) {
+      // Pinch zoom
+      const newDist = getTouchDist(e.touches);
+      const scale = newDist / pinchStartRef.current.dist;
+      const newZoom = Math.min(Math.max(pinchStartRef.current.zoom * scale, 0.75), 3.5);
+      setZoom(newZoom);
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.stopPropagation();
+    if (e.touches.length === 0) {
+      setIsDragging(false);
+      touchStartRef.current = null;
+      pinchStartRef.current = null;
+    }
+  };
+
   return (
     <div
       id="archive-lightbox-overlay"
-      className="fixed inset-0 z-50 flex flex-col items-center justify-between bg-black/90 backdrop-blur-md p-4 sm:p-6"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-between bg-black/90 backdrop-blur-md p-3 sm:p-6"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
       {/* Top Header & Controls */}
-      <div className="w-full max-w-5xl flex items-center justify-between border-b border-[#44382d] pb-3 text-[#d3c7b8]">
-        <div>
-          <div className="text-xs uppercase tracking-widest text-[#a89078] font-cinzel">
+      <div className="w-full max-w-5xl flex items-center justify-between border-b border-[#44382d] pb-3 text-[#d3c7b8] gap-2">
+        <div className="min-w-0">
+          <div className="text-[10px] sm:text-xs uppercase tracking-widest text-[#a89078] font-cinzel">
             Archival Inspection Specimen
           </div>
-          <h2 className="text-lg sm:text-xl font-cinzel font-semibold text-[#f0e6d6]">
+          <h2 className="text-sm sm:text-xl font-cinzel font-semibold text-[#f0e6d6] truncate">
             {title}
           </h2>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
           {/* Zoom controls */}
-          <div className="flex items-center gap-1 bg-[#1e1915] border border-[#44382d] rounded px-2 py-1">
+          <div className="flex items-center gap-0.5 sm:gap-1 bg-[#1e1915] border border-[#44382d] rounded px-1.5 sm:px-2 py-1">
             <button
               id="lightbox-zoom-out-btn"
               type="button"
@@ -104,7 +164,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
             >
               <ZoomOut className="w-4 h-4" />
             </button>
-            <span className="text-xs font-mono px-1 w-12 text-center text-[#c2b4a3]">
+            <span className="text-xs font-mono px-1 w-10 sm:w-12 text-center text-[#c2b4a3]">
               {Math.round(zoom * 100)}%
             </span>
             <button
@@ -123,7 +183,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
                 setZoom(1);
                 setPan({ x: 0, y: 0 });
               }}
-              className="p-1 hover:text-white transition-colors ml-1 border-l border-[#44382d]"
+              className="p-1 hover:text-white transition-colors ml-0.5 sm:ml-1 border-l border-[#44382d]"
               title="Reset Zoom (0)"
             >
               <RotateCcw className="w-4 h-4" />
@@ -162,7 +222,10 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
-        className={`relative w-full max-w-5xl flex-1 my-3 overflow-hidden flex items-center justify-center rounded-lg border border-[#3b3026] bg-[#0d0b09] select-none ${
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        className={`relative w-full max-w-5xl flex-1 my-3 overflow-hidden flex items-center justify-center rounded-lg border border-[#3b3026] bg-[#0d0b09] select-none touch-none ${
           zoom > 1 ? (isDragging ? 'cursor-grabbing' : 'cursor-grab') : 'cursor-default'
         }`}
       >
@@ -181,14 +244,15 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
         {zoom > 1 && (
           <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur border border-[#44382d] text-[#b5a390] text-xs px-2.5 py-1 rounded flex items-center gap-1.5 pointer-events-none">
             <Move className="w-3.5 h-3.5 text-[#c8924b]" />
-            <span>Click & drag to inspect details</span>
+            <span className="hidden sm:inline">Click &amp; drag to inspect details</span>
+            <span className="sm:hidden">Drag or pinch to inspect</span>
           </div>
         )}
       </div>
 
       {/* Footer Caption */}
       <div className="w-full max-w-5xl text-center text-xs text-[#8f7e6f] font-serif-body">
-        {caption || 'Click and drag to pan when zoomed. Press Esc or close button to return to archive.'}
+        {caption || 'Drag to pan · Pinch or use +/− to zoom · Tap Esc or ✕ to close'}
       </div>
     </div>
   );

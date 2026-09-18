@@ -16,15 +16,10 @@ export const LetterReel01: React.FC<LetterReel01Props> = ({ onNavigate }) => {
 
   // SVG Burned Letter Specimen (Rendered as graphic image, non-selectable)
   const renderBurnedLetter = (isZoomed: boolean = false) => {
-    const width = isZoomed ? 820 : 640;
-    const height = isZoomed ? 560 : 440;
-
     return (
       <svg
         viewBox="0 0 800 520"
-        width={width}
-        height={height}
-        className="max-w-full h-auto drop-shadow-2xl select-none"
+        className={`max-w-full h-auto drop-shadow-2xl select-none ${isZoomed ? 'w-full' : 'w-full'}`}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
