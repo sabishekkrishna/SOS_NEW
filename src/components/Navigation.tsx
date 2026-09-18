@@ -69,28 +69,28 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3">
         {/* Brand / Archive Title */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-shrink-0 min-w-0">
           <button
             id="nav-brand-btn"
             type="button"
             onClick={() => onNavigate('/')}
-            className="group flex items-center gap-2.5 text-left focus:outline-none"
+            className="group flex items-center gap-2.5 text-left focus:outline-none min-w-0"
           >
-            <div className="w-7 h-7 rounded border border-[#695542] bg-[#221c16] flex items-center justify-center text-[#c8924b] group-hover:border-[#c8924b] transition-colors">
+            <div className="w-7 h-7 rounded border border-[#695542] bg-[#221c16] flex items-center justify-center text-[#c8924b] group-hover:border-[#c8924b] transition-colors flex-shrink-0">
               <Archive className="w-4 h-4" />
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="font-cinzel text-sm sm:text-base font-bold tracking-wider text-[#e8dfd3] group-hover:text-[#f3ede4] transition-colors">
                 THE THORNE ARCHIVE
               </div>
-              <div className="text-[10px] uppercase font-typewriter tracking-widest text-[#8a7767]">
+              <div className="text-[10px] uppercase font-typewriter tracking-widest text-[#8a7767] hidden sm:block">
                 DEPT. OF HISTORICAL ANOMALIES • SEALED 1932
               </div>
             </div>
           </button>
 
           {/* Current Path Indicator on mobile */}
-          <div className="md:hidden font-mono text-[11px] text-[#c8924b] bg-[#1c1713] px-2 py-0.5 rounded border border-[#3d3126]">
+          <div className="md:hidden font-mono text-[11px] text-[#c8924b] bg-[#1c1713] px-2 py-0.5 rounded border border-[#3d3126] ml-2 truncate max-w-[110px]">
             {currentPath}
           </div>
         </div>
@@ -105,7 +105,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
                 id={`nav-${exhibit.id}-btn`}
                 type="button"
                 onClick={() => onNavigate(exhibit.path)}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs transition-all whitespace-nowrap border ${
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs transition-all whitespace-nowrap border flex-shrink-0 ${
                   isActive
                     ? 'bg-[#2b221a] text-[#f5ebd7] border-[#9a7854] shadow-sm'
                     : 'bg-[#181410] text-[#a89887] border-[#31271f] hover:text-[#e4d8c7] hover:border-[#524235] hover:bg-[#201a14]'
@@ -125,7 +125,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
             id="nav-materials-btn"
             type="button"
             onClick={() => onNavigate('/materials')}
-            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs transition-all whitespace-nowrap border ml-0.5 ${
+            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs transition-all whitespace-nowrap border ml-0.5 flex-shrink-0 ${
               currentPath === '/materials'
                 ? 'bg-[#2b221a] text-[#f5ebd7] border-[#9a7854] shadow-sm'
                 : 'bg-[#181410] text-[#a89887] border-[#31271f] hover:text-[#e4d8c7] hover:border-[#524235] hover:bg-[#201a14]'
@@ -145,7 +145,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
             id="nav-vault-btn"
             type="button"
             onClick={() => onNavigate('/vault')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs transition-all whitespace-nowrap border ml-1 ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs transition-all whitespace-nowrap border ml-1 flex-shrink-0 ${
               currentPath === '/vault'
                 ? 'bg-[#422915] text-[#ffdfab] border-[#c8924b] shadow-[0_0_12px_rgba(200,146,75,0.25)]'
                 : 'bg-[#1a1410] text-[#827161] border-[#382b21] hover:text-[#bca48e] hover:border-[#4d3c2e]'
@@ -158,7 +158,14 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
               <Lock className="w-3.5 h-3.5 text-[#827161]" />
             )}
             <span className="font-cinzel tracking-wider">
-              {currentPath === '/vault' ? 'The Vault' : 'Locked — requires the Archive\'s true code'}
+              {currentPath === '/vault' ? (
+                'The Vault'
+              ) : (
+                <>
+                  <span className="sm:hidden">Locked</span>
+                  <span className="hidden sm:inline">Locked — requires the Archive&apos;s true code</span>
+                </>
+              )}
             </span>
           </button>
         </nav>
