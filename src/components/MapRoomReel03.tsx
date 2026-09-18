@@ -233,8 +233,7 @@ export const MapRoomReel03: React.FC<MapRoomReel03Props> = ({ onNavigate }) => {
         </p>
 
         <blockquote className="text-base sm:text-lg font-serif-body italic text-[#eee4d7] leading-relaxed border-l-2 border-[#c8924b] pl-4 my-2">
-          &ldquo;A vault is only a door. Count what holds the string, and you&apos;ll have the first key.
-          The corner remembers what the shift should be.&rdquo;
+          &ldquo;A vault is only a door. The pins and strings represent something much more than that, and you&apos;ll have the first key.
         </blockquote>
       </div>
 
